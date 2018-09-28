@@ -1,0 +1,10 @@
+This package allows you to create or use data structures that will 
+adhere to an interface, because they must be able to implement these
+requirements.
+
+- Must be able to add items
+- Must be able to remove items (based off of index)
+- Must be able to sort items (based off of date due)
+- Must be able to list items (based off of date due)
+
+-
