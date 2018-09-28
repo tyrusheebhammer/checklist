@@ -6,7 +6,7 @@ var CheckList = function(){
     this.points, this.assignments;
     this.points = 0;
     this.assignments = [];
-}
+};
 
 CheckList.prototype.open = function(){};
 
@@ -39,7 +39,7 @@ CheckList.prototype.removeAssignment = function(assignmentIndex){
 CheckList.prototype.completeAssignment = function(assignmentIndex){
     score += assignments[assignmentIndex].timeUntilDue();
     this.removeAssignment(assignmentIndex);
-}
+};
 
 CheckList.prototype.toString = function(){
     var str = '';
@@ -60,40 +60,6 @@ CheckList.prototype.createAssignment = function(course, assignment, dueDate){
         dueDate: dueDate
     }));
 };
-var cl = new CheckList();
-
-var classes = ['RH330', 'MA490', 'CSSE371', 'CSSE497'];
-
-var work = ['Homework', 'Project', 'Assignment', 'Test'];
-
-var rand = function(val){
-    return Math.floor(val * Math.random());
-    
-};
-
-console.reset = function () {
-    return process.stdout.write('\033c');
-};
-
-cl.createAssignment('RH330', 'Do Homework', new Date(2018, 10));
-
-createNewTimeout1();
-
-function createNewTimeout1(){
-    console.log(cl.toString());
-    setTimeout(() => {
-        console.reset();
-        createNewTimeout2();
-    }, 1000);
-};
-
-function createNewTimeout2(){
-    console.log(cl.toString());
-    setTimeout(() => {
-        console.reset();
-        createNewTimeout1();
-    }, 1000);
-}
 
 module.exports = CheckList;
 

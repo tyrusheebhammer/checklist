@@ -15,6 +15,7 @@ console commands to:
             year: '18_19',
             current_term: 'fall'
             fall: {
+                classes: ['RH330']
                 early_points: 0
                 completed: []
                 todo: []
