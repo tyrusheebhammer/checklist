@@ -44,12 +44,14 @@ CheckList.prototype.toString = function(){
     return str
 };
 
-//Used to add an assignment through 3 parameters, passed onto the addAssignment functionality
-CheckList.prototype.createAssignment = function(course, assignment, dueDate){
+//Used to add an assignment through 4 parameters, passed onto the addAssignment functionality,
+//details is an optional parameter
+CheckList.prototype.createAssignment = function(course, assignment, dueDate, details = ''){
     this.addAssignment(new assn({
         course: course,
         assignment: assignment,
-        dueDate: dueDate
+        dueDate: dueDate,
+        details: details
     }));
 };
 
