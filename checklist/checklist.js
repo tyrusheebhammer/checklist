@@ -8,22 +8,14 @@ var CheckList = function(){
     this.assignments = [];
 };
 
-CheckList.prototype.open = function(){};
+CheckList.prototype.open = function(dataStore){};
 
 CheckList.prototype.close = function(){};
 
 CheckList.prototype.sortAssignments = function() {
-    this.assignments.sort((assn1,assn2) => {
+    this.assignments.sort((assn1, assn2) => {
         return assn1.dueDate - assn2.dueDate;
     });
-};
-
-CheckList.prototype.getAll = function(){
-    return this.assignments;
-};
-
-CheckList.prototype.getAllBefore = function(before){
-    return assignments.filter((assignment) => assignment.dueDate <= before);
 };
 
 CheckList.prototype.addAssignment = function(assignment){
@@ -37,7 +29,7 @@ CheckList.prototype.removeAssignment = function(assignmentIndex){
 };
 
 CheckList.prototype.completeAssignment = function(assignmentIndex){
-    score += assignments[assignmentIndex].timeUntilDue();
+    score += assignments[assignmentIndex].timeUntilDue().days;
     this.removeAssignment(assignmentIndex);
 };
 
