@@ -5,11 +5,11 @@ const ab = require('./handler/assignmentbook');
 
 var shutdown = () => {
     console.log("thanks for trying us out!")
-    
-}
+    process.exit(0);
+};
 var unavailable = () => {
     return console.log('sorry! this functionality is not yet available!');
-}
+};
 
 var checklistHandler = () => {
     console.log('Selected Checklist');
@@ -54,7 +54,7 @@ var handleResponse = (response) => {
             help();
             return true;
         case 'q': case 'Q': //fallthrough
-            rl.close();
+            shutdown();
             break;
         default:
             console.log(`${response} is invalid input`);

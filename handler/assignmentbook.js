@@ -8,11 +8,26 @@ var handleResponse = (response) => {
             return true;
     }
 };
+var data;
 
-var start = (rl) => {
+var handleEmpty = () => {
+    rl = readline.createInterface(process.stdin, process.stdout);
+    rl.setPrompt('\n')
+};
+
+var readData = () => {
+    data = fr.read();
+    if(data.length === 0){
+        console.log('empty af');
+        
+    }
+};
+
+var start = () => {
     console.clear()
     console.log('Welcome to the Assignment Book!'+
                 '\nReading in data from your file...');
+    readData();
     rl = readline.createInterface(process.stdin, process.stdout);
     rl.setPrompt('\n\nPlease choose mode, or (H)elp> ');
 
@@ -22,20 +37,11 @@ var start = (rl) => {
             rl.prompt();
         }
     });
-
-    // rl.setPrompt('\n\nPlease choose mode, or (H)elp> ');
-    // rl.prompt();
-
-    // rl.on('line', function(response) {
-    //     if(handleResponse(response)){
-    //         rl.prompt();
-    //     } else {
-    //         rl.close();
-    //     }
-    // }).on('close', function() {
-    //     process.exit(0);
-    // });
 };
+
+start();
+
+
 
 module.exports = {
     start
