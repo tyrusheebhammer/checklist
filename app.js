@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const _ = require('lodash');
-const readline = require('readline');
+const prompt = require('prompt');
 const ab = require('./handler/assignmentbook');
 
 var shutdown = () => {
@@ -18,7 +18,6 @@ var checklistHandler = () => {
 
 var assignmentHandler = () => {
     console.log('Selected Assignment Book');
-    rl.close();
     ab.start();
 };
 
@@ -63,9 +62,6 @@ var handleResponse = (response) => {
     return false;
 };
 
-const rl = readline.createInterface(process.stdin, process.stdout);
-
-console.clear();
 var header = 'Welcome to Checklist v0.1.0, the malfunctioning checklist application'+ 
             '\nhere are the supported modes:\n\n' + 
             '\n[0] - (C)hecklist'+
@@ -74,14 +70,18 @@ var header = 'Welcome to Checklist v0.1.0, the malfunctioning checklist applicat
 
 console.log(header);
 
-rl.setPrompt('\n\nPlease choose mode, or (H)elp> ');
-rl.prompt();
+console.log('\n\nPlease choose mode, or (H)elp> ');
+prompt.start();
 
-rl.on('line', function(response) {
-    if(handleResponse(response)){
-        rl.prompt();
-    }
-});
+(startupPrompt = () => {
+    prompt.get('option', (err, response) => {
+        if(handleResponse(response.option)) {
+            startupPrompt()
+        }
+    });
+})();
+
+
 
 
 
